@@ -1,4 +1,4 @@
-fetch('https://fakestoreapi.com/products?limit=9')
+fetch('https://fakestoreapi.com/products?limit=18')
             .then(res=>res.json())
             .then(json=>addToPage(json));
 
@@ -21,19 +21,24 @@ function addToPage(content){
 
 function newCol(element, destination, id){
     let col = document.createElement('div');
-    col.classList.add('col-sm');
+    col.classList.add('col-md-4');
+    col.classList.add('p-5');
     col.setAttribute('id', 'product-' + id);
+    col.setAttribute('style', 'height: 500px')
 
     let img = document.createElement('img');;
     img.src = element.image;
-    img.classList.add('img-thumbnail');
-    col.appendChild(img);
+    img.classList.add('list-image');
+    
+    let imgContainer = document.createElement('div');
+    imgContainer.classList.add('imgContainer');
+    imgContainer.appendChild(img);
 
     let a = document.createElement('a');
     let textNode = document.createTextNode(element.title);
     a.appendChild(textNode);
 
-    col.appendChild(img);
+    col.appendChild(imgContainer);
     col.appendChild(a);
 
     destination.appendChild(col);
