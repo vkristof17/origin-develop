@@ -1,4 +1,4 @@
-fetch('https://fakestoreapi.com/products?limit=18')
+fetch('https://fakestoreapi.com/products?limit=9')
             .then(res=>res.json())
             .then(json=>addToPage(json));
 
@@ -34,7 +34,7 @@ function newCol(element, destination, id){
     imgContainer.classList.add('imgContainer');
     imgContainer.appendChild(img);
 
-    let a = document.createElement('a');
+    let a = document.createElement('p');
     let textNode = document.createTextNode(element.title);
     a.appendChild(textNode);
 
@@ -54,3 +54,23 @@ function newRow(id){
     
     return row;
 }
+
+
+    let images = [];
+    let i = 0;
+    let time = 3000;
+
+    images[0] = 'img/1.jpg';
+    images[1] = 'img/2.jpg';
+    images[2] = 'img/3.jpg';
+    images[3] = 'img/4.jpg';
+
+function changeImg(){
+    document.slide.src = images[i];
+    i++;
+    if(images.length === i){
+        i = 0;
+    }
+    setTimeout("changeImg()", time);
+}
+window.onload = changeImg;
